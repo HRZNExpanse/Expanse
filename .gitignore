@@ -49,6 +49,9 @@ hs_err_pid*
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+build/
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
