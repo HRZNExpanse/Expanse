@@ -1,4 +1,4 @@
-package com.hrznstudio.spatial.worker;
+package com.hrznstudio.expanse.worker;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.logging.log4j.LogManager;

@@ -1,6 +1,6 @@
-package com.hrznstudio.spatial.util;
+package com.hrznstudio.expanse.util;
 
-import com.hrznstudio.spatial.api.IDispatcherLoop;
+import com.hrznstudio.expanse.api.IDispatcherLoop;
 import improbable.worker.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

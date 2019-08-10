@@ -1,4 +1,4 @@
-package com.hrznstudio.spatial.util;
+package com.hrznstudio.expanse.util;
 
 public enum ConnectionStatus {
     DISCONNECTED,

@@ -1,4 +1,4 @@
-package com.hrznstudio.spatial.api;
+package com.hrznstudio.expanse.api;
 
 public interface IDispatcherLoop {
     void onLoop();

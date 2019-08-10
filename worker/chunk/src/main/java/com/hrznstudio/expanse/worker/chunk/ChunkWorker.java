@@ -1,8 +1,8 @@
-package com.hrznstudio.spatial.worker.chunk;
+package com.hrznstudio.expanse.worker.chunk;
 
-import com.hrznstudio.spatial.util.ConnectionManager;
-import com.hrznstudio.spatial.util.EntityBuilder;
-import com.hrznstudio.spatial.worker.BaseWorker;
+import com.hrznstudio.expanse.util.ConnectionManager;
+import com.hrznstudio.expanse.util.EntityBuilder;
+import com.hrznstudio.expanse.worker.BaseWorker;
 import improbable.Coordinates;
 import improbable.Position;
 import improbable.WorkerAttributeSet;

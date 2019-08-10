@@ -1,6 +1,6 @@
-package com.hrznstudio.spatial.worker;
+package com.hrznstudio.expanse.worker;
 
-import com.hrznstudio.spatial.util.ConnectionManager;
+import com.hrznstudio.expanse.util.ConnectionManager;
 import improbable.worker.Connection;
 import improbable.worker.DisconnectOp;
 import improbable.worker.Dispatcher;
