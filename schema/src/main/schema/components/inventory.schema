@@ -1,0 +1,9 @@
+package minecraft.inventory;
+import "components/item.schema";
+
+// Reserves 1200-1299
+
+component Inventory {
+  id = 1200;
+  map<int32, minecraft.item.ItemStack> items = 1;
+}

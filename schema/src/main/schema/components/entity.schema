@@ -1,0 +1,53 @@
+package minecraft.entity;
+import "improbable/standard_library.schema";
+import "improbable/vector3.schema";
+
+// Reserves 1000-1099
+
+component Health {
+  id = 1001;
+  int32 current = 1;
+  int32 max = 2;
+}
+
+component Food {
+  id = 1002;
+  int32 current = 1;
+  int32 max = 2;
+}
+
+component Experience {
+  id = 1003;
+  float xp = 1;
+}
+
+component Rotation {
+  id = 1004;
+  float yaw = 1;
+  float pitch = 2;
+}
+
+component Motion {
+  id = 1005;
+  improbable.Vector3f motion = 1;
+}
+
+component WorldEntity {
+  id= 1010;
+}
+
+component ChatAbility {
+  id = 1007;
+}
+
+type IgnitionRequest {
+  int32 time = 1;
+}
+
+type Void {}
+
+component Flammable {
+  id = 1008;
+  bool is_on_fire = 1;
+  command Void ignite(IgnitionRequest);
+}

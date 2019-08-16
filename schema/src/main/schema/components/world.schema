@@ -1,0 +1,30 @@
+package minecraft.world;
+
+// Reserves 1300-1399
+
+type Block {
+  string id = 1;
+}
+
+type State {
+  Block block = 1;
+  int32 meta = 2;
+}
+
+/**
+ * A single chunk holds 16x16x16 states.
+ */
+component ChunkStorage {
+  id = 1300;
+
+  /*
+   * Map containing all the states in this chunk.
+   * The key is the position of the state inside the chunk, mapped as follows :
+   *    x << 4 + y << 2 + z
+   */
+  map<uint32, State> blocks = 2;
+}
+
+component Tile {
+  id = 1301;
+}

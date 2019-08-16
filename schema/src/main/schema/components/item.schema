@@ -1,0 +1,14 @@
+package minecraft.item;
+
+// Reserves 1100-1199
+
+type Item {
+  string id = 1;
+}
+
+type ItemStack {
+  Item item = 1;
+  int32 count = 2;
+  int32 damage = 3;
+  option<bytes> nbt = 4;
+}

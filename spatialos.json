@@ -1,7 +1,7 @@
 {
   "configurationVersion": "0.1",
   "projectName": "demo",
-  "schemaDescriptor": "./schema/bin/schema.descriptor",
+  "schemaDescriptor": "./schema/build/descriptor",
   "__opt_disabled__launchConfiguration": "./launch_configs/deployment.json",
   "__opt_disabled__clientWorkers": [
     "./client_config.json"

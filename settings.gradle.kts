@@ -1,9 +1,10 @@
 include("worker")
 file("worker").listFiles()!!.asSequence()
         .filter(File::isDirectory)
-        .filter { it.name != ".gradle" && it.name != "libs" }
+        .filter { it.name != ".gradle" && it.name != "libs" && it.name != "build" }
         .forEach { include("worker:${it.name}") }
 include("schema")
+include("spatial_stl")
 
 val kotlin_version: String by settings
 val undercouch_dl_version: String by settings
