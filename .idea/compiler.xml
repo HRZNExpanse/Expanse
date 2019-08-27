@@ -2,6 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="base_main" target="1.8" />
+      <module name="base_test" target="1.8" />
+      <module name="chunk_main" target="1.8" />
+      <module name="chunk_test" target="1.8" />
+      <module name="client_main" target="1.8" />
+      <module name="client_test" target="1.8" />
       <module name="Expanse.buildSrc.main" target="1.8" />
       <module name="Expanse.buildSrc.test" target="1.8" />
       <module name="Expanse.main" target="1.8" />
@@ -18,6 +24,19 @@
       <module name="Expanse.worker.chunk.test" target="1.8" />
       <module name="Expanse.worker.main" target="1.8" />
       <module name="Expanse.worker.test" target="1.8" />
+      <module name="Expanse_buildSrc_main" target="1.8" />
+      <module name="Expanse_buildSrc_test" target="1.8" />
+      <module name="Expanse_main" target="1.8" />
+      <module name="Expanse_test" target="1.8" />
+      <module name="schema_main" target="1.8" />
+      <module name="schema_test" target="1.8" />
+      <module name="spatial_stl_main" target="1.8" />
+      <module name="spatial_stl_test" target="1.8" />
+      <module name="worker_main" target="1.8" />
+      <module name="worker_test" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-Xplugin:&quot;Manifold strings exceptions&quot; " />
   </component>
 </project>

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "expanse",
+  "version": "${version}",
+
+  "name": "Expanse",
+  "description": "",
+  "authors": [
+    "Expanse Technologies",
+    "Horizon Studios"
+  ],
+  "contact": {
+    "homepage": "https://hrznstudio.com/",
+    "sources": "https://github.com/HRZNExpase/Expanse"
+  },
+  "license": "ARR",
+  "icon": "assets/expanse/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.hrznstudio.expanse.ExpanseMod"
+    ]
+  },
+  "mixins": [
+    "expanse.mixins.json",
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0"
+  },
+  "suggests": {
+  }
+}

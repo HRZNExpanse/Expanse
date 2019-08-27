@@ -10,6 +10,13 @@ val kotlin_version: String by settings
 val undercouch_dl_version: String by settings
 
 pluginManagement {
+    repositories {
+        jcenter()
+        maven(url = "http://maven.fabricmc.net"){
+            name = "Fabric"
+        }
+        gradlePluginPortal()
+    }
     resolutionStrategy {
         eachPlugin {
             logger.debug("Requested: " + requested.id.id)
