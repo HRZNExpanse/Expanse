@@ -1,4 +1,4 @@
-package minecraft.player;
+package com.hrznstudio.expanse.schema.player;
 
 import "improbable/vector3.schema";
 

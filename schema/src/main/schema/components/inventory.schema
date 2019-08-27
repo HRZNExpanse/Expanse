@@ -1,9 +1,9 @@
-package minecraft.inventory;
+package com.hrznstudio.expanse.schema.inventory;
 import "components/item.schema";
 
 // Reserves 1200-1299
 
 component Inventory {
   id = 1200;
-  map<int32, minecraft.item.ItemStack> items = 1;
+  map<int32, com.hrznstudio.expanse.schema.item.ItemStack> items = 1;
 }

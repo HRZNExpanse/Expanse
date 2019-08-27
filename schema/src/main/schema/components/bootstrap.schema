@@ -1,4 +1,4 @@
-package minecraft.boostrap;
+package com.hrznstudio.expanse.schema.boostrap;
 
 import "components/player.schema";
 
@@ -8,11 +8,8 @@ type Message {
   string message = 1;
 }
 
-/**
- * A single chunk holds 16x16x16 states.
- */
 component Bootstrap {
   id = 1400;
-  map<string, minecraft.player.GameProfile> online_players = 1;
+  map<string, com.hrznstudio.expanse.schema.player.GameProfile> online_players = 1;
   command Message on_chat(Message);
 }

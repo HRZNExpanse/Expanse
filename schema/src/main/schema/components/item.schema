@@ -1,4 +1,4 @@
-package minecraft.item;
+package com.hrznstudio.expanse.schema.item;
 
 // Reserves 1100-1199
 

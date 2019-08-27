@@ -1,4 +1,4 @@
-package minecraft.entity;
+package com.hrznstudio.expanse.schema.entity;
 import "improbable/standard_library.schema";
 import "improbable/vector3.schema";
 
@@ -33,7 +33,7 @@ component Motion {
 }
 
 component WorldEntity {
-  id= 1010;
+  id = 1010;
 }
 
 component ChatAbility {

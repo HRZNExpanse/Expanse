@@ -1,4 +1,4 @@
-package minecraft.world;
+package com.hrznstudio.expanse.schema.world;
 
 // Reserves 1300-1399
 
