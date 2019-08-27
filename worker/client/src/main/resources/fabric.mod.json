@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "expanse",
+  "id": "expanse-client",
   "version": "${version}",
 
-  "name": "Expanse",
+  "name": "Expanse Client",
   "description": "",
   "authors": [
     "Expanse Technologies",
@@ -22,7 +22,7 @@
     ]
   },
   "mixins": [
-    "expanse.mixins.json"
+    "expanse.client.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.4.0"

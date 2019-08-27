@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "com.hrznstudio.expanse.client.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.7",
+  "mixins": [
+    "MixinMinecraftClient"
+  ]
+}
