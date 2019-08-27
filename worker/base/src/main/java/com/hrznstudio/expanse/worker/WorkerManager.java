@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.ServiceLoader;
 
 @CommandLine.Command(name = "worker", sortOptions = false,
-
         header = {
                 "@|blue Spatial Worker Manager |@",
                 ""

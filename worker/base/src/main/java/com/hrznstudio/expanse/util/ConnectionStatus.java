@@ -17,4 +17,8 @@ public enum ConnectionStatus {
     public boolean isFailure() {
         return this == FAILED;
     }
+
+    public boolean isDisconnected() {
+        return this == DISCONNECTED || this == FAILED;
+    }
 }

@@ -94,6 +94,7 @@ abstract public class BaseWorker<D extends Dispatcher> implements WorkerService 
     public D getDispatcher() {
         return dispatcher;
     }
+
     public Connection getConnection() {
         return ConnectionManager.getConnection();
     }
