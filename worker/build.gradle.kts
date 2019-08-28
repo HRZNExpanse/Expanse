@@ -14,6 +14,7 @@ subprojects {
 
         if (this@subprojects.name != "base") implementation(project(":worker:base"))
         implementation(project(":schema"))
+        implementation(project(":minecraft"))
 
         implementation("org.apache.logging.log4j:log4j-core:${prop("log4j_version")}")
         implementation("org.apache.commons:commons-lang3:${prop("commons-lang_version")}")
