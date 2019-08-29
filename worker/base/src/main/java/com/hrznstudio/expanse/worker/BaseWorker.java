@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.function.Supplier;
 
@@ -90,7 +89,6 @@ abstract public class BaseWorker<D extends Dispatcher> implements WorkerService 
     /**
      * @return this worker's current dispatcher
      */
-    @Nullable
     public D getDispatcher() {
         return dispatcher;
     }
