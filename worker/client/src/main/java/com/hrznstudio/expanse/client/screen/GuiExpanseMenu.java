@@ -84,7 +84,7 @@ public class GuiExpanseMenu extends Screen {
     @Override
     protected void init() {
         if (this.splashText == null) {
-            this.splashText = "Expansive!";
+            this.splashText = "Infinite Minecraft!";
         }
 
         this.copyrightTextWidth = this.font.getStringWidth("Copyright Mojang AB. Do not distribute!");
@@ -179,10 +179,10 @@ public class GuiExpanseMenu extends Screen {
             }
 
             this.minecraft.getTextureManager().bindTexture(EDITION_TITLE_TEXTURE);
-            blit(int_4 + 88, 67, 0.0F, 0.0F, 98, 14, 128, 16);
+            blit(int_4+74, 67, 0.0F, 0.0F, 126, 14, 128, 16);
             if (this.splashText != null) {
                 GlStateManager.pushMatrix();
-                GlStateManager.translatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
+                GlStateManager.translatef((float)(this.width / 2 + 110), 70.0F, 0.0F);
                 GlStateManager.rotatef(-20.0F, 0.0F, 0.0F, 1.0F);
                 float float_4 = 1.8F - MathHelper.abs(MathHelper.sin((float)(SystemUtil.getMeasuringTimeMs() % 1000L) / 1000.0F * 6.2831855F) * 0.1F);
                 float_4 = float_4 * 100.0F / (float)(this.font.getStringWidth(this.splashText) + 32);
