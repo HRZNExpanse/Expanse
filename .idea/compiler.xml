@@ -11,6 +11,8 @@
       <module name="Expanse.buildSrc.main" target="1.8" />
       <module name="Expanse.buildSrc.test" target="1.8" />
       <module name="Expanse.main" target="1.8" />
+      <module name="Expanse.minecraft.main" target="1.8" />
+      <module name="Expanse.minecraft.test" target="1.8" />
       <module name="Expanse.schema.main" target="1.8" />
       <module name="Expanse.schema.test" target="1.8" />
       <module name="Expanse.spatial_stl.main" target="1.8" />
@@ -18,10 +20,14 @@
       <module name="Expanse.test" target="1.8" />
       <module name="Expanse.worker.base.main" target="1.8" />
       <module name="Expanse.worker.base.test" target="1.8" />
+      <module name="Expanse.worker.bootstrap.main" target="1.8" />
+      <module name="Expanse.worker.bootstrap.test" target="1.8" />
       <module name="Expanse.worker.build.main" target="1.8" />
       <module name="Expanse.worker.build.test" target="1.8" />
       <module name="Expanse.worker.chunk.main" target="1.8" />
       <module name="Expanse.worker.chunk.test" target="1.8" />
+      <module name="Expanse.worker.client.main" target="1.8" />
+      <module name="Expanse.worker.client.test" target="1.8" />
       <module name="Expanse.worker.main" target="1.8" />
       <module name="Expanse.worker.test" target="1.8" />
       <module name="Expanse_buildSrc_main" target="1.8" />
@@ -37,6 +43,6 @@
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_STRING" value="-Xplugin:&quot;Manifold strings exceptions&quot; " />
+    <option name="ADDITIONAL_OPTIONS_STRING" value=" " />
   </component>
 </project>
