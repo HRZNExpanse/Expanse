@@ -15,7 +15,7 @@ subprojects {
         if (this@subprojects.name != "base") implementation(project(":worker:base"))
         implementation(project(":schema"))
         implementation(project(":minecraft"))
-
+        implementation("net.fabricmc:sponge-mixin:0.7.11.38")
         implementation("org.apache.logging.log4j:log4j-core:${prop("log4j_version")}")
         implementation("org.apache.commons:commons-lang3:${prop("commons-lang_version")}")
         implementation("org.reflections:reflections:0.9.11")

@@ -3,15 +3,12 @@ import net.fabricmc.loom.providers.MappingsCache
 import net.fabricmc.loom.util.MinecraftVersionInfo
 import net.fabricmc.loom.util.TinyRemapperMappingsHelper
 import net.fabricmc.stitch.merge.JarMerger
-import net.fabricmc.tinyremapper.TinyRemapper
 import net.fabricmc.tinyremapper.OutputConsumerPath
-import org.checkerframework.checker.units.qual.A
+import net.fabricmc.tinyremapper.TinyRemapper
 
 import java.nio.file.Paths
-import java.util.concurrent.Callable
 import java.util.function.Function
 import java.util.function.IntFunction
-import java.util.stream.Stream
 
 buildscript {
     repositories {
@@ -46,43 +43,7 @@ configurations {
     api.extendsFrom mcl
 }
 
-task downloadMinecraft(type: Exec) {
-    FileReader reader = new FileReader(new File(this.projectDir, "version/1.14.4.json"))
-    Gson gson = new Gson();
-    MinecraftVersionInfo versionInfo = gson.fromJson(reader, MinecraftVersionInfo.class)
-
-    download {
-        src "https://launcher.mojang.com/v1/objects/8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9/client.jar"
-        dest 'minecraft/minecraft-client.1.14.4.jar'
-        onlyIfModified true
-    }
-    download {
-        src "https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar"
-        dest 'minecraft/minecraft-server.1.14.4.jar'
-        onlyIfModified true
-    }
-
-    for (MinecraftVersionInfo.Library library : versionInfo.libraries) {
-        if (library.allowed()) {
-            project.dependencies.add("mcl", project.dependencies.module(library.getArtifactName()))
-        }
-    }
-    def merged = new File(this.projectDir, "minecraft/minecraft-merged.1.14.4.jar")
-    def client = new File(this.projectDir, "minecraft/minecraft-client.1.14.4.jar");
-    def server = new File(this.projectDir, "minecraft/minecraft-server.1.14.4.jar");
-    if (!merged.exists() && (server.exists() && client.exists())) {
-        def merger = new JarMerger(client, server, merged)
-        merger.enableSyntheticParamsOffset()
-        merger.merge()
-    } else {
-        if(!merged.exists()) {
-            throw new RuntimeException("Failed to download minecraft")
-        }
-    }
-
-    def original = merged;
-    def output = new File(this.projectDir, "minecraft/minecraft.1.14.4.jar")
-
+def remap(File original, File output) {
     if(!output.exists()) {
         println(":remapping ${original.name}")
 
@@ -119,14 +80,72 @@ task downloadMinecraft(type: Exec) {
         } finally {
             remapper.finish();
         }
-    } else {
-        println(output.size())
+    }
+}
+
+def downloadMinecraft() {
+    FileReader reader = new FileReader(new File(this.projectDir, "version/1.14.4.json"))
+    Gson gson = new Gson();
+    MinecraftVersionInfo versionInfo = gson.fromJson(reader, MinecraftVersionInfo.class)
+
+    download {
+        src "https://launcher.mojang.com/v1/objects/8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9/client.jar"
+        dest 'minecraft/minecraft-client.1.14.4.jar'
+        onlyIfModified true
+    }
+    download {
+        src "https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar"
+        dest 'minecraft/minecraft-server.1.14.4.jar'
+        onlyIfModified true
     }
 
+    for (MinecraftVersionInfo.Library library : versionInfo.libraries) {
+        if (library.allowed()) {
+            project.dependencies.add("mcl", project.dependencies.module(library.getArtifactName()))
+        }
+    }
+
+    def merged = new File(this.projectDir, "minecraft/minecraft-merged.1.14.4.jar")
+    def client = new File(this.projectDir, "minecraft/minecraft-client.1.14.4.jar");
+    def server = new File(this.projectDir, "minecraft/minecraft-server.1.14.4.jar");
+    if (!merged.exists() && (server.exists() && client.exists())) {
+        def merger = new JarMerger(client, server, merged)
+        merger.enableSyntheticParamsOffset()
+        merger.merge()
+    } else {
+        if(!merged.exists()) {
+            throw new RuntimeException("Failed to download minecraft")
+        }
+    }
+
+    def output = new File(this.projectDir, "minecraft/minecraft.1.14.4.jar")
+
+    remap(merged, output)
+}
+
+task testDownload() {
+    downloadMinecraft()
 }
 
 dependencies {
     api(files("${this.projectDir}/minecraft/minecraft.1.14.4.jar") {
-        builtBy downloadMinecraft
+        builtBy testDownload
     })
+    api('net.fabricmc:fabric-loader:0.6.+')
+    implementation('commons-io:commons-io:2.6')
+    implementation('org.zeroturnaround:zt-zip:1.13')
+    implementation('com.google.code.gson:gson:2.8.5')
+    implementation('com.google.guava:guava:28.0-jre')
+    implementation('net.fabricmc:fabric-mixin-compile-extensions:0.1.0.+')
+    implementation('net.fabricmc:procyon-fabric-compilertools:0.5.35.+')
+    implementation('org.jetbrains:intellij-fernflower:1.0.0.9')
+    implementation('org.cadixdev:mercury:0.1.0.fabric-SNAPSHOT')
+    implementation('org.ow2.asm:asm:7.1')
+    implementation('org.ow2.asm:asm-analysis:7.1')
+    implementation('org.ow2.asm:asm-commons:7.1')
+    implementation('org.ow2.asm:asm-tree:7.1')
+    implementation('org.ow2.asm:asm-util:7.1')
+    implementation('net.fabricmc:sponge-mixin:0.7.11.38')
+    implementation('com.google.jimfs:jimfs:1.1')
+    implementation('net.fabricmc:fabric-loader-sat4j:2.3.5.4')
 }

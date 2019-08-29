@@ -62,7 +62,7 @@ public class GuiExpanseMenu extends Screen {
         this.doBackgroundFade = boolean_1;
         this.field_17776 = (double)(new Random()).nextFloat() < 1.0E-4D;
         if (!GLX.supportsOpenGL2() && !GLX.isNextGen()) {
-            this.warning = new GuiExpanseMenu.Warning((new TranslatableText("title.oldgl.eol.line1")).formatted(Formatting.RED).formatted(Formatting.BOLD), (new TranslatableText("title.oldgl.eol.line2")).formatted(Formatting.RED).formatted(Formatting.BOLD), "https://help.mojang.com/customer/portal/articles/325948?ref=game");
+//            this.warning = new GuiExpanseMenu.Warning((new TranslatableText("title.oldgl.eol.line1")).formatted(Formatting.RED).formatted(Formatting.BOLD), (new TranslatableText("title.oldgl.eol.line2")).formatted(Formatting.RED).formatted(Formatting.BOLD), "https://help.mojang.com/customer/portal/articles/325948?ref=game");
         }
 
     }

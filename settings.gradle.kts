@@ -8,7 +8,6 @@ include("minecraft")
 include("spatial_stl")
 
 val kotlin_version: String by settings
-//val undercouch_dl_version: String by settings
 
 pluginManagement {
     repositories {
