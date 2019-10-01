@@ -17,13 +17,18 @@ public class ExpanseInjection {
         try {
             Method addUrl = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
             addUrl.setAccessible(true);
-            Stream.of(original.getURLs()).filter(url -> url.toExternalForm().contains("spatial") || url.toExternalForm().contains("improbable")).forEach(url -> {
-                try {
-                    addUrl.invoke(parent, url);
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+            Stream.of(original.getURLs())
+                    .filter(url -> url.toExternalForm().contains("spatial") ||
+                            url.toExternalForm().contains("improbable") ||
+                            url.toExternalForm().contains("worker")
+                    )
+                    .forEach(url -> {
+                        try {
+                            addUrl.invoke(parent, url);
+                        } catch (IllegalAccessException | InvocationTargetException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
