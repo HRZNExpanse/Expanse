@@ -1,5 +1,6 @@
 {
   "configurationVersion": "0.1",
   "projectName": "expanse",
-  "schemaDescriptor": "./schema/build/descriptor"
+  "schemaDescriptor": "./schema/build/descriptor",
+  "launchConfiguration": "./config/launch/deployment.json"
 }

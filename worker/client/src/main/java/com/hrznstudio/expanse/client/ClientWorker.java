@@ -2,7 +2,6 @@ package com.hrznstudio.expanse.client;
 
 import com.hrznstudio.expanse.worker.BaseWorker;
 import net.fabricmc.loader.launch.knot.KnotClient;
-import org.spongepowered.asm.launch.MixinBootstrap;
 
 public final class ClientWorker extends BaseWorker<ClientView> {
     public ClientWorker() {
@@ -15,6 +14,7 @@ public final class ClientWorker extends BaseWorker<ClientView> {
     }
 
     public static void main(String[] args) {
+        System.setProperty("fabric.development", "true");
         KnotClient.main(args);
     }
 }

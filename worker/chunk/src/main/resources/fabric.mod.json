@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "expanse-bootstrap",
+  "id": "expanse-chunk",
   "version": "${version}",
 
-  "name": "Expanse Bootstrap",
+  "name": "Expanse Chunk",
   "description": "",
   "authors": [
     "Expanse Technologies",
@@ -18,11 +18,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.hrznstudio.expanse.bootstrap.BootstrapMod"
+      "com.hrznstudio.expanse.ExpanseMod"
     ]
   },
   "mixins": [
-    "expanse.bootstrap.mixins.json"
+    "expanse.chunk.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.4.0"

@@ -1,6 +1,7 @@
 package com.hrznstudio.expanse.client.screen;
 
 import com.google.common.util.concurrent.Runnables;
+import com.hrznstudio.expanse.client.ClientWorker;
 import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.fabricmc.api.EnvType;
@@ -10,7 +11,6 @@ import net.minecraft.client.gui.CubeMapRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.*;
-import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.widget.AbstractButtonWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -18,6 +18,7 @@ import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ChatUtil;
@@ -60,11 +61,11 @@ public class GuiExpanseMenu extends Screen {
         super(new TranslatableText("narrator.screen.title"));
         this.backgroundRenderer = new RotatingCubeMapRenderer(PANORAMA_CUBE_MAP);
         this.doBackgroundFade = boolean_1;
-        this.field_17776 = (double)(new Random()).nextFloat() < 1.0E-4D;
-        if (!GLX.supportsOpenGL2() && !GLX.isNextGen()) {
-//            this.warning = new GuiExpanseMenu.Warning((new TranslatableText("title.oldgl.eol.line1")).formatted(Formatting.RED).formatted(Formatting.BOLD), (new TranslatableText("title.oldgl.eol.line2")).formatted(Formatting.RED).formatted(Formatting.BOLD), "https://help.mojang.com/customer/portal/articles/325948?ref=game");
+        this.field_17776 = (double) (new Random()).nextFloat() < 1.0E-4D;
+        if (!GLX.supportsOpenGL2() && !GLX.isNextGen()) { // Don't support old GL, there's no point
+            throw new RuntimeException(new TranslatableText("title.oldgl.eol.line1").asFormattedString() + "\n" + new TranslatableText("title.oldgl.eol.line2").asFormattedString());
         }
-
+        this.warning = new Warning(new LiteralText("Expanse Development Edition").formatted(Formatting.RED, Formatting.BOLD), new LiteralText("You are using an experimental dev version, not everything will work.").formatted(Formatting.RED), "https://hrznstudio.com");
     }
 
     public static CompletableFuture<Void> loadTexturesAsync(TextureManager textureManager_1, Executor executor_1) {
@@ -119,7 +120,7 @@ public class GuiExpanseMenu extends Screen {
             this.minecraft.openScreen(new SelectWorldScreen(this));
         }));
         this.addButton(new ButtonWidget(this.width / 2 - 100, int_1 + int_2 * 1, 200, 20, "Connect to Expanse", (buttonWidget_1) -> {
-            this.minecraft.openScreen(new MultiplayerScreen(this));
+            new ClientWorker().start();
         }));
         ButtonWidget widget;
         this.addButton(widget = new ButtonWidget(this.width / 2 - 100, int_1 + int_2 * 2, 200, 20, "Sandbox", (buttonWidget_1) -> {
@@ -138,7 +139,6 @@ public class GuiExpanseMenu extends Screen {
             if (levelProperties_1 != null) {
                 this.minecraft.openScreen(new ConfirmScreen(this::method_20375, new TranslatableText("selectWorld.deleteQuestion"), new TranslatableText("selectWorld.deleteWarning", levelProperties_1.getLevelName()), I18n.translate("selectWorld.deleteButton"), I18n.translate("gui.cancel")));
             }
-
         }));
         LevelStorage levelStorage_1 = this.minecraft.getLevelStorage();
         LevelProperties levelProperties_1 = levelStorage_1.getLevelProperties("Demo_World");
@@ -272,7 +272,7 @@ public class GuiExpanseMenu extends Screen {
 
         public void render(int int_1) {
             DrawableHelper.fill(this.startX - 2, this.startY - 2, this.endX + 2, this.endY - 1, 1428160512);
-            GuiExpanseMenu.this.drawString(GuiExpanseMenu.this.font, this.line1.asFormattedString(), this.startX, this.startY, 16777215 | int_1);
+            GuiExpanseMenu.this.drawCenteredString(GuiExpanseMenu.this.font, this.line1.asFormattedString(), this.startX + ((endX - startX) / 2), this.startY, 16777215 | int_1);
             GuiExpanseMenu.this.drawString(GuiExpanseMenu.this.font, this.line2.asFormattedString(), (GuiExpanseMenu.this.width - this.line2Width) / 2, this.startY + 12, 16777215 | int_1);
         }
 

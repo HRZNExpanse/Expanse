@@ -24,9 +24,6 @@ public class MixinMinecraftClient {
     @Final
     private ResourcePackContainerManager<ClientResourcePackContainer> resourcePackContainerManager;
 
-    @Shadow
-    public InGameHud inGameHud;
-
     @Inject(method = "<init>", at = @At("RETURN"))
     public void constructor(CallbackInfo info) {
         this.resourcePackContainerManager.addCreator(new ExpanseResourceCreator());

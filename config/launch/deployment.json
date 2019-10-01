@@ -1,0 +1,23 @@
+{
+  "template": "w2_r0500_e5",
+  "dimensionsInWorldUnits": {
+    "x": 100,
+    "z": 100
+  },
+  "loadBalancing": {
+    "layerConfigurations": [
+      {
+        "layer": "bootstrap",
+        "rectangle_grid": {
+          "cols": 1,
+          "rows": 1
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "takeSnapshotIntervalSeconds": "600",
+    "startDeploymentFromSnapshotFile": "../../snapshots/default.snapshot"
+  },
+  "streamingQueryInterval": 4
+}
